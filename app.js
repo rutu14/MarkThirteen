@@ -1,6 +1,5 @@
 
   
-/* VARIABLES */
 const checkBtn = document.querySelector('.btn-check');
 const birthdateIp = document.querySelector('#birthdate');
 const loadingDiv = document.querySelector('.loading');
@@ -14,63 +13,25 @@ checkBtn.addEventListener('click', handleCheckButtonClick);
 
 function handleCheckButtonClick(e) {
     const birthdate = birthdateIp.value;
-    // showSection(true);
+   
     if(birthdate==="" || birthdate=== null) {
-        // showMessage(true,"Please select your birthdate","error");
+        
         messageDiv.innerHTML="Please enter a date"
     }
     else {
-        // showMessage(true, "Crunching Numbers", "success");
-        // console.log(birthdate.split('-'));
-        // showLoadingDiv(true);
-
         const isPalindrome = checkIfPalindrome(birthdate.split('-'));
-        setTimeout(function(){
-            displayOutput(isPalindrome, birthdate.split('-'));
-        }, 3000);
+        setTimeout(function(){ displayOutput(isPalindrome, birthdate.split('-'));}, 3000);
     }
 }
 
-// function showSection(flag) {
-//     if(flag) {
-//         outputSec.classList.remove('display-none');
-//         outputSec.classList.add('display-block');
-//     }
-//     else {
-//         outputSec.classList.add('display-none');
-//         outputSec.classList.remove('display-block');
-//     }
-// }
-
-// function showMessage(flag, message, className) {
-//     if(flag) {
-//         messageDiv.className = `message display-block ${className}`;
-//         messageDiv.innerHTML = message;
-//     }
-//     else {
-//         messageDiv.className = "message display-none";
-//     }
-// }
-
-// function showLoadingDiv(flag) {
-//     if(flag) {
-//         loadingDiv.classList.remove('display-none');
-//         loadingDiv.classList.add('display-block');
-//     }
-//     else {
-//         loadingDiv.classList.add('display-none');
-//         loadingDiv.classList.remove('display-block');
-//     }
-// }
 
 function checkIfPalindrome(birthdate) {
-    // console.log(birthdate);
-
+    
     const year = birthdate[0];
     const month = birthdate[1];
     const date = birthdate[2];
 
-    const formatOne = month+date+year; //mm-dd-yyyy
+    const formatOne = month+date+year;
     const formatTwo = month+date+year.substring(2);
     const formatThree = date+month+year;
     const formatFour = year+month+date;
@@ -78,30 +39,24 @@ function checkIfPalindrome(birthdate) {
 
 
     if(checkFormat(formatOne)) {
-        // return `${month}-${date}-${year}`;
         return `${date}-${month}-${year}`;
     }
     if(checkFormat(formatTwo)) {
-        // return `${date}-${month}-${year.substring(2)}`;
         return `${date}-${month}-${year}`;
     }
     if(checkFormat(formatThree)){
         return `${date}-${month}-${year}`;
     }
     if(checkFormat(formatFour)){
-        // return `${year}-${month}-${date}`;
         return `${date}-${month}-${year}`;
     }
-    
     return false;
 }
 
 function checkFormat(format) {
-    // console.log(format);
     let i = 0, j = format.length-1;    
     while(i < j) {
-        // console.log(format[i], format[j]);
-        if(format[i] !== format[j]) return false;
+      if(format[i] !== format[j]) return false;
         i++;
         j--;
     }
@@ -110,12 +65,7 @@ function checkFormat(format) {
 }
 
 function displayOutput(isPalindrome, birthdate) {
-    // showLoadingDiv(false);
-
-    // console.log(isPalindrome);
-    // messageDiv.className = "message output display-block";
-
-    if(!isPalindrome) {
+     if(!isPalindrome) {
         closestDateForward = findClosestForwardDate(birthdate);
         closestDateBackward = findClosestBackwardDate(birthdate);
 
