@@ -36,7 +36,7 @@ function palindromePresent( birthdate ) {
 
 
 
-    if(checkFormat(formatOne)) {
+    if(formatchecker(formatOne)) {
         return `${date}-${month}-${year}`;
     }
     if(formatchecker(formatTwo)) {
